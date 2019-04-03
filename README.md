@@ -1,14 +1,59 @@
-# analog_time_picker
+# analog_time_picker package for Flutter
 
-A new Flutter package for .
+[![pub package](https://img.shields.io/pub/v/location_and_image_picker.svg)](https://pub.dartlang.org/packages/location_and_image_picker)
 
-## Getting Started
+A Flutter package for iOS and Android for picking last seven dates and time with analog view.
+## Demo
+<img src="http://sheikhsoft.com/screensort/analog_time_picker.gif" width="340" height="640" title="Screen Shoot">
 
-This project is a starting point for a Dart
-[package](https://flutter.io/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+First, add `analog_time_picker` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+
+### iOS
+
+No configuration required - the plugin should work out of the box.
+
+### Android
+
+No configuration required - the plugin should work out of the box.
+
+### Code for the analog day time picker
+
+``` dart
+import 'package:analog_time_picker/analog_time_picker.dart';
+
+
+class AnalogDayPick extends StatelessWidget{
+ Map<String, DateTime> _dateTime = new Map();
+ 
+  @override
+  Widget build(BuildContext context) {
+    return AnalogTimePicker(
+                           onChanged: getDayTime,
+                         );
+  }
+ void getDayTime(Map value) {
+     _dateTime = value;
+   }
+}
+```
+
+### Code for the Full page Analog day time picker widget
+
+``` dart
+import 'package:analog_time_picker/full_page_analog_time_picker.dart';
+
+class FullPageClock extends StatelessWidget {
+  final Map mapData;
+  const FullPageClock({Key key, this.mapData}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return FullPageAnalogTimePicker(
+      mapData: mapData,     
+      route: "/sixth",
+    );
+  }
+}
+```

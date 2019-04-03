@@ -1,8 +1,8 @@
 name: analog_time_picker
 description: A new Flutter package for .
 version: 0.0.1
-author:
-homepage:
+author: SK SHAMIMUL ISLAM (SHEIKHSOFT)<sheikhsoft.com@gmail.com>
+homepage: https://github.com/Sheikhsoft/analog_time_picker
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
