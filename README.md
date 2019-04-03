@@ -1,6 +1,6 @@
 # analog_time_picker package for Flutter
 
-[![pub package](https://img.shields.io/pub/v/location_and_image_picker.svg)](https://pub.dartlang.org/packages/location_and_image_picker)
+[![pub package](https://img.shields.io/pub/v/analog_time_picker.svg)](https://pub.dartlang.org/packages/lanalog_time_picker)
 
 A Flutter package for iOS and Android for picking last seven dates and time with analog view.
 ## Demo
