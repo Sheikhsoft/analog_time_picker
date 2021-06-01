@@ -16,24 +16,23 @@ class AnalogTimePicker extends StatefulWidget {
 }
 
 class _AnalogTimePickerState extends State<AnalogTimePicker> {
-  Map<String, DateTime> _dateTime = new Map();
+  final Map<String, DateTime> _dateTime = {};
 
   DateTime colckTime = DateTime.now();
 
-  List<DateModel> dateList = new List<DateModel>();
+  List<DateModel> dateList = <DateModel>[];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     var now = colckTime;
 
-    var today = new DateTime(now.year, now.month, now.day);
-    var today_1 = new DateTime(now.year, now.month, now.day - 1);
-    var today_2 = new DateTime(now.year, now.month, now.day - 2);
-    var today_3 = new DateTime(now.year, now.month, now.day - 3);
-    var today_4 = new DateTime(now.year, now.month, now.day - 4);
-    var today_5 = new DateTime(now.year, now.month, now.day - 5);
-    var today_6 = new DateTime(now.year, now.month, now.day - 6);
+    var today = DateTime(now.year, now.month, now.day);
+    var today_1 = DateTime(now.year, now.month, now.day - 1);
+    var today_2 = DateTime(now.year, now.month, now.day - 2);
+    var today_3 = DateTime(now.year, now.month, now.day - 3);
+    var today_4 = DateTime(now.year, now.month, now.day - 4);
+    var today_5 = DateTime(now.year, now.month, now.day - 5);
+    var today_6 = DateTime(now.year, now.month, now.day - 6);
 
     dateList.add(DateModel(true, today));
     dateList.add(DateModel(false, today_1));
@@ -52,19 +51,19 @@ class _AnalogTimePickerState extends State<AnalogTimePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return new Padding(
+    return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 25.0),
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        child: new Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
               margin: EdgeInsets.all(8.0),
               alignment: Alignment.topLeft,
               child: Text(
-                "When was it?",
+                'When was it?',
                 style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
               ),
             ),
@@ -73,7 +72,7 @@ class _AnalogTimePickerState extends State<AnalogTimePicker> {
               margin: EdgeInsets.all(16.0),
               alignment: Alignment.topLeft,
               child: Text(
-                "Select approximate time",
+                'Select approximate time',
                 style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
@@ -83,7 +82,7 @@ class _AnalogTimePickerState extends State<AnalogTimePicker> {
                   Container(
                     padding: EdgeInsets.all(16.0),
                     alignment: Alignment.topRight,
-                    child: Text(new DateFormat.jm().format(colckTime)),
+                    child: Text(DateFormat.jm().format(colckTime)),
                   ),
                   Container(
                     margin:
@@ -109,7 +108,7 @@ class _AnalogTimePickerState extends State<AnalogTimePicker> {
                           },
                         );
                       },
-                      child: new Clock(
+                      child: Clock(
                         circleColor: Colors.white,
                         showBellsAndLegs: false,
                         bellColor: Colors.blueAccent,
@@ -158,7 +157,7 @@ class _AnalogTimePickerState extends State<AnalogTimePicker> {
         scrollDirection: Axis.horizontal,
         itemCount: dateList.length,
         itemBuilder: (BuildContext context, int index) {
-          return new InkWell(
+          return InkWell(
             onTap: () {
               //print("Click on ${dateList[index].dateTime}");
 
@@ -168,7 +167,7 @@ class _AnalogTimePickerState extends State<AnalogTimePicker> {
                 _dateTime['date'] = dateList[index].dateTime;
               });
             },
-            child: new DateItem(dateList[index]),
+            child: DateItem(dateList[index]),
           );
         },
       ),
@@ -186,8 +185,8 @@ class DateItem extends StatelessWidget {
   final DateModel _item;
   DateItem(this._item);
 
-  _dateItem(DateModel _item) {
-    DateTime dateTime = _item.dateTime;
+  Card _dateItem(DateModel _item) {
+    var dateTime = _item.dateTime;
     return Card(
       color: _item.isSelected ? Colors.deepPurple : Colors.white,
       child: Container(
