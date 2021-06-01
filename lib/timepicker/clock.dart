@@ -30,7 +30,7 @@ class Clock extends StatefulWidget {
       this.time});
 
   static DateTime getSystemTime() {
-    return new DateTime.now();
+    return DateTime.now();
   }
 
   @override
@@ -49,7 +49,7 @@ class _Clock extends State<Clock> {
 
     dateTime = widget.time;
 
-    this._timer = new Timer.periodic(widget.updateDuration, setTime);
+    this._timer = Timer.periodic(widget.updateDuration, setTime);
   }
 
   void setTime(Timer time) {
@@ -66,14 +66,14 @@ class _Clock extends State<Clock> {
 
   @override
   Widget build(BuildContext context) {
-    return new AspectRatio(
+    return AspectRatio(
       aspectRatio: 1.0,
       child: (widget.showBellsAndLegs)
-          ? new Stack(children: <Widget>[
-              new Container(
+          ? Stack(children: <Widget>[
+              Container(
                 width: double.infinity,
-                child: new CustomPaint(
-                  painter: new BellsAndLegsPainter(
+                child: CustomPaint(
+                  painter: BellsAndLegsPainter(
                       bellColor: widget.bellColor, legColor: widget.legColor),
                 ),
               ),
@@ -84,19 +84,19 @@ class _Clock extends State<Clock> {
   }
 
   Container buildClockCircle(BuildContext context) {
-    return new Container(
+    return Container(
       width: double.infinity,
-      decoration: new BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: widget.circleColor,
         boxShadow: [
-          new BoxShadow(
-            offset: new Offset(0.0, 5.0),
+          BoxShadow(
+            offset: Offset(0.0, 5.0),
             blurRadius: 5.0,
           )
         ],
       ),
-      child: new ClockFace(
+      child: ClockFace(
         clockText: widget.clockText,
         showHourHandleHeartShape: widget.showHourHandleHeartShape,
         dateTime: dateTime,
@@ -114,8 +114,8 @@ class BellsAndLegsPainter extends CustomPainter {
   BellsAndLegsPainter(
       {this.bellColor = const Color(0xFF333333),
       this.legColor = const Color(0xFF555555)})
-      : bellPaint = new Paint(),
-        legPaint = new Paint() {
+      : bellPaint = Paint(),
+        legPaint = Paint() {
     bellPaint.color = bellColor;
     bellPaint.style = PaintingStyle.fill;
 
@@ -133,7 +133,7 @@ class BellsAndLegsPainter extends CustomPainter {
     canvas.translate(radius, radius);
 
     //draw the handle
-    Path path = new Path();
+    var path = Path();
     path.moveTo(-60.0, -radius - 10);
     path.lineTo(-50.0, -radius - 50);
     path.lineTo(50.0, -radius - 50);
@@ -155,15 +155,15 @@ class BellsAndLegsPainter extends CustomPainter {
   //helps draw the leg and bell
   void drawBellAndLeg(radius, canvas) {
     //bell
-    Path path1 = new Path();
+    var path1 = Path();
     path1.moveTo(-55.0, -radius - 5);
     path1.lineTo(55.0, -radius - 5);
     path1.quadraticBezierTo(0.0, -radius - 75, -55.0, -radius - 10);
 
     //leg
-    Path path2 = new Path();
-    path2.addOval(new Rect.fromCircle(
-        center: new Offset(0.0, -radius - 50), radius: 3.0));
+    var path2 = Path();
+    path2.addOval(Rect.fromCircle(
+        center: Offset(0.0, -radius - 50), radius: 3.0));
     path2.moveTo(0.0, -radius - 50);
     path2.lineTo(0.0, radius + 20);
 
