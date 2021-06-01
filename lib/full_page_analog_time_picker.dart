@@ -14,7 +14,7 @@ class FullPageAnalogTimePicker extends StatelessWidget {
   FullPageAnalogTimePicker({Key key, this.mapData, this.container, this.route})
       : super(key: key);
 
-  Map<String, DateTime> _dateTime = new Map();
+  Map<String, DateTime> _dateTime = {};
   @override
   Widget build(BuildContext context) {
     print(mapData);
@@ -22,7 +22,7 @@ class FullPageAnalogTimePicker extends StatelessWidget {
       body: Container(
         child: Stack(
           children: <Widget>[
-            container != null ? container : Container(),
+            container ?? Container(),
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(top: 50.0),
@@ -35,7 +35,6 @@ class FullPageAnalogTimePicker extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
                 backgroundColor: Colors.black87,
-                child: Icon(Icons.arrow_forward),
                 onPressed: () {
                   //print(_dateTime);
                   mapData['date'] =
@@ -45,6 +44,7 @@ class FullPageAnalogTimePicker extends StatelessWidget {
                   Navigator.pushNamed(context, '/sixth', arguments: mapData);
                   // print(DateFormat.yMMMMd().format(_dateTime['date']));
                 },
+                child: Icon(Icons.arrow_forward),
               ),
             ),
             MyBackButton(),
